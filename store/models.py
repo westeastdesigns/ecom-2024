@@ -50,7 +50,13 @@ class Product(models.Model):
     """Product defines database tables for all products
 
     Args:
-        models (_type_): _description_
+        name (CharField): name of product
+        price (DecimalField): price of product
+        category (ForeignKey): references Category table for name of product category
+        description (TextField): description of product
+        image (ImageField): image of product
+        is_sale (BooleanField): is it on sale or not, false by default
+        sale_price (DecimalField): price of product while on sale
 
     Returns:
         CharField: name of product
@@ -61,6 +67,10 @@ class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, default=1)
     description = models.TextField(max_length=1500, default="", blank=True, null=True)
     image = models.ImageField(upload_to="uploads/product/")
+
+    # support for sales
+    is_sale = models.BooleanField(default=False)
+    sale_price = models.DecimalField(default=0, decimal_places=2, max_digits=6)
 
     def __str__(self):
         return self.name
