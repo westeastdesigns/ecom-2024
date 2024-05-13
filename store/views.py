@@ -1,12 +1,18 @@
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
-from django import forms
 from django.shortcuts import redirect, render
 
+# may not need these 3 below, they're definitely used in forms.py
+# from django import forms
+# from django.contrib.auth.forms import UserCreationForm
+# from django.contrib.auth.models import User
 from .forms import SignUpForm
 from .models import Product
+
+
+def product(request, pk):
+    product = Product.objects.get(id=pk)
+    return render(request, "product.html", {"product": product})
 
 
 def home(request):
