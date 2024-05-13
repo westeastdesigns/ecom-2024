@@ -18,12 +18,17 @@
                 {% endif %}
                 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categories</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">All Products</a></li>
+                        <li><a class="dropdown-item" href="{% url 'home' %}">All Products</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-                        <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
+                        
+                        <!-- additional categories for future use - case-sensitive -->
+                        <!-- <li><a class="dropdown-item" href="{% url 'category' 'Apparel' %}">Apparel</a></li> -->
+                        
+                        <!-- current categories -->
+                        <li><a class="dropdown-item" href="{% url 'category' 'Books' %}">Books</a></li>
+                        <li><a class="dropdown-item" href="{% url 'category' 'Vinyl-Records' %}">Vinyl Records</a></li>
                     </ul>
                 </li>
             </ul>

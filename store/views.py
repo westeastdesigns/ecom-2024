@@ -7,7 +7,24 @@ from django.shortcuts import redirect, render
 # from django.contrib.auth.forms import UserCreationForm
 # from django.contrib.auth.models import User
 from .forms import SignUpForm
-from .models import Product
+from .models import Category, Product
+
+
+def category(request, foo):
+    # replace any hyphens in category names with a space
+    foo = foo.replace("-", " ")
+    # get the category from the url
+    try:
+        # search for the category
+        category = Category.objects.get(name=foo)
+        products = Product.objects.filter(category=category)
+        return render(
+            request, "category.html", {"products": products, "category": category}
+        )
+    except Exception as e:
+        # handle the exception with a little message for the user
+        messages.success(request, (f"Sorry, that category does not exist. {e}"))
+        return redirect("home")
 
 
 def product(request, pk):

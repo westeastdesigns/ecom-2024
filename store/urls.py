@@ -10,4 +10,5 @@ urlpatterns = [
     path("register/", views.register_user, name="register"),
     # product page, each numbered according to its private key as its identifier
     path("product/<int:pk>", views.product, name="product"),
+    path("category/<str:foo>", views.category, name="category"),
 ]
